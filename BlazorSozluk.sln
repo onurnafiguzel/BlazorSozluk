@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorSozluk.Api.WebApi", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorSozluk.Projections.FavoriteService", "src\Projections\BlazorSozluk.Projections.FavoriteService\BlazorSozluk.Projections.FavoriteService.csproj", "{A045A088-4C43-453B-84A1-850352ECCF88}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorSozluk.Projections.UserService", "src\Projections\BlazorSozluk.Projections.UserService\BlazorSozluk.Projections.UserService.csproj", "{272566A6-1295-4275-B55F-FCBE0112841A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{A045A088-4C43-453B-84A1-850352ECCF88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A045A088-4C43-453B-84A1-850352ECCF88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A045A088-4C43-453B-84A1-850352ECCF88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{272566A6-1295-4275-B55F-FCBE0112841A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{272566A6-1295-4275-B55F-FCBE0112841A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{272566A6-1295-4275-B55F-FCBE0112841A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{272566A6-1295-4275-B55F-FCBE0112841A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +88,7 @@ Global
 		{E1AC1D61-601C-4AE0-9061-8255889368D6} = {B91AC476-15C4-4946-9E39-2ADED0A7D87A}
 		{6C05E331-3978-4DB4-B642-509C906FAA9B} = {819EC326-DF61-49FB-BC7F-8C82D473E44C}
 		{A045A088-4C43-453B-84A1-850352ECCF88} = {4E3AF67E-5499-496E-BFDA-C5D856221BA2}
+		{272566A6-1295-4275-B55F-FCBE0112841A} = {4E3AF67E-5499-496E-BFDA-C5D856221BA2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {57311C1B-BE31-48FB-9FF2-330BA6167D8E}
