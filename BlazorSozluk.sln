@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorSozluk.Projections.Fa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorSozluk.Projections.UserService", "src\Projections\BlazorSozluk.Projections.UserService\BlazorSozluk.Projections.UserService.csproj", "{272566A6-1295-4275-B55F-FCBE0112841A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorSozluk.Projections.VoteService", "src\Projections\BlazorSozluk.Projections.VoteService\BlazorSozluk.Projections.VoteService.csproj", "{111D1420-2606-42A7-8CF0-989D320F118E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{272566A6-1295-4275-B55F-FCBE0112841A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{272566A6-1295-4275-B55F-FCBE0112841A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{272566A6-1295-4275-B55F-FCBE0112841A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{111D1420-2606-42A7-8CF0-989D320F118E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{111D1420-2606-42A7-8CF0-989D320F118E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{111D1420-2606-42A7-8CF0-989D320F118E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{111D1420-2606-42A7-8CF0-989D320F118E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +95,7 @@ Global
 		{6C05E331-3978-4DB4-B642-509C906FAA9B} = {819EC326-DF61-49FB-BC7F-8C82D473E44C}
 		{A045A088-4C43-453B-84A1-850352ECCF88} = {4E3AF67E-5499-496E-BFDA-C5D856221BA2}
 		{272566A6-1295-4275-B55F-FCBE0112841A} = {4E3AF67E-5499-496E-BFDA-C5D856221BA2}
+		{111D1420-2606-42A7-8CF0-989D320F118E} = {4E3AF67E-5499-496E-BFDA-C5D856221BA2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {57311C1B-BE31-48FB-9FF2-330BA6167D8E}
