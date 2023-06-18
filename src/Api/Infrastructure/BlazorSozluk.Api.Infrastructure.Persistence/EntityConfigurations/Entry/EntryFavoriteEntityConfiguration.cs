@@ -1,5 +1,5 @@
 ﻿using BlazorSozluk.Api.Domain.Models;
-using BlazorSozluk.Infrastructure.Persistence.Context;
+using BlazorSozluk.Api.Infrastructure.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -19,6 +19,7 @@ public class EntryFavoriteEntityConfiguration : BaseEntityConfiguration<EntryFav
 
         builder.HasOne(i => i.CreatedUser)
             .WithMany(i => i.EntryFavorites)
-            .HasForeignKey(i => i.CreatedById);
+            .HasForeignKey(i => i.CreatedById)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

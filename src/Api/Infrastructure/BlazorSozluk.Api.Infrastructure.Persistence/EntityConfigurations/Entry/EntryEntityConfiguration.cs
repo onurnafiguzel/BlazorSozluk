@@ -1,4 +1,4 @@
-﻿using BlazorSozluk.Infrastructure.Persistence.Context;
+﻿using BlazorSozluk.Api.Infrastructure.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

@@ -1,13 +1,18 @@
 ﻿using BlazorSozluk.Api.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using System.Reflection.Emit;
 
-namespace BlazorSozluk.Infrastructure.Persistence.Context;
+namespace BlazorSozluk.Api.Infrastructure.Persistence.Context;
 
 public class BlazorSozlukContext : DbContext
 {
     public const string DEFAULT_SCHEMA = "dbo";
 
+    public BlazorSozlukContext()
+    {
+
+    }
     public BlazorSozlukContext(DbContextOptions options) : base(options)
     {
     }
@@ -23,6 +28,20 @@ public class BlazorSozlukContext : DbContext
     public DbSet<EntryCommentFavorite> EntryCommentFavorites { get; set; }
 
     public DbSet<EmailConfirmation> EmailConfirmations { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            var conStr = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=YoutubeBlazorsozluk;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            optionsBuilder.UseSqlServer(conStr, opt =>
+            {
+                opt.EnableRetryOnFailure();
+            });
+        }
+
+        base.OnConfiguring(optionsBuilder);
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
