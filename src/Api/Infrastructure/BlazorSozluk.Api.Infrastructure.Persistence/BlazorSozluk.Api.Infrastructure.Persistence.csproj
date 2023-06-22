@@ -19,6 +19,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\Core\BlazorSozluk.Api.Application\BlazorSozluk.Api.Application.csproj" />
 		<ProjectReference Include="..\..\Core\BlazorSozluk.Domain\BlazorSozluk.Api.Domain.csproj" />
 		<Folder Include="EntityConfigurations\" />
 		<Folder Include="Extensions\" />
