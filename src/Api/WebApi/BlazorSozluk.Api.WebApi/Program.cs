@@ -1,5 +1,6 @@
 using BlazorSozluk.Api.Application.Extensions;
 using BlazorSozluk.Api.Infrastructure.Persistence.Extensions;
+using BlazorSozluk.Api.WebApi;
 using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services
-    .AddControllers()
+    .AddControllers(opt => opt.Filters.Add<ValidateModelStateFilter>())
     .AddJsonOptions(opt =>
     {
         opt.JsonSerializerOptions.PropertyNamingPolicy = null;
