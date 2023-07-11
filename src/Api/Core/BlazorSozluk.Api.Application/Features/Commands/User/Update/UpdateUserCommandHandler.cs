@@ -23,31 +23,11 @@ public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, Guid>
         if (dbUser is null)
             throw new DatabaseValidationException("User not found!");
 
-        var dbEmailAddress = dbUser.EmailAddress;
-        var emailChanged = string.CompareOrdinal(dbEmailAddress, request.EmailAddress) != 0;
-
         mapper.Map(request, dbUser);
 
         var rows = await userRepository.UpdateAsync(dbUser);
 
-        // Check if email changed
-
-        if (emailChanged && rows > 0)
-        {
-            var @event = new UserEmailChangedEvent()
-            {
-                OldEmailAddress = null,
-                NewEmailAddress = dbUser.EmailAddress
-            };
-
-            QueueFactory.SendMessageToExchange(exchangeName: SozlukConstants.UserExchangeName,
-                                               exchangeType: SozlukConstants.DefaultExchangeType,
-                                               queueName: SozlukConstants.UserEmailChangedQueueName,
-                                               obj: @event);
-
-            dbUser.EmailConfirmed = false;
-            await userRepository.UpdateAsync(dbUser);
-        }
+        // Check if email changed        
 
         return dbUser.Id;
     }
