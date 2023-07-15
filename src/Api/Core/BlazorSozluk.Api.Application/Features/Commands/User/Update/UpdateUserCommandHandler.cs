@@ -1,38 +1,41 @@
 ﻿using AutoMapper;
 using BlazorSozluk.Api.Application.Interfaces.Repositories;
+using BlazorSozluk.Common.Events.User;
 using BlazorSozluk.Common.Infrastructure;
 using BlazorSozluk.Common;
 using BlazorSozluk.Common.Infrastructure.Exceptions;
 using BlazorSozluk.Common.Models.RequestModels;
 using MediatR;
-using BlazorSozluk.Common.Events.User;
 
-namespace BlazorSozluk.Api.Application.Features.Commands.Entry.User.Create;
+namespace BlazorSozluk.Api.Application.Features.Commands.User.Update;
 
-public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Guid>
+public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, Guid>
 {
     private readonly IMapper mapper;
     private readonly IUserRepository userRepository;
 
-    public CreateUserCommandHandler(IMapper mapper, IUserRepository userRepository)
+    public UpdateUserCommandHandler(IMapper mapper, IUserRepository userRepository)
     {
         this.mapper = mapper;
         this.userRepository = userRepository;
     }
-
-    public async Task<Guid> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+    public async Task<Guid> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
     {
-        var existsUser = await userRepository.GetSingleAsync(i => i.EmailAddress == request.EmailAddress);
+        var dbUser = await userRepository.GetByIdAsync(request.Id);
 
-        if (existsUser is not null)
-            throw new DatabaseValidationException("User already exists!");
+        if (dbUser is null)
+            throw new DatabaseValidationException("User not found!");
 
-        var dbUser = mapper.Map<Domain.Models.User>(request);
+        var dbEmailAddress = dbUser.EmailAddress;
+        var emailChanged = string.CompareOrdinal(dbEmailAddress, request.EmailAddress) != 0; // Check old and new Email original
 
-        var rows = await userRepository.AddAsync(dbUser);
+        mapper.Map(request, dbUser);
 
-        // Email Changed/Created
-        if (rows > 0)
+        var rows = await userRepository.UpdateAsync(dbUser);
+
+        #region CheckIfEmailChanged
+
+        if (emailChanged && rows > 0)
         {
             var @event = new UserEmailChangedEvent()
             {
@@ -44,7 +47,12 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Guid>
                                                exchangeType: SozlukConstants.DefaultExchangeType,
                                                queueName: SozlukConstants.UserEmailChangedQueueName,
                                                obj: @event);
+
+            dbUser.EmailConfirmed = false;
+            await userRepository.UpdateAsync(dbUser);
         }
+
+        #endregion
 
         return dbUser.Id;
     }
