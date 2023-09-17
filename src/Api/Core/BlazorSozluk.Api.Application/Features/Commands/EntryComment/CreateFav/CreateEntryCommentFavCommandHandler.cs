@@ -20,4 +20,4 @@ public class CreateEntryCommentFavCommandHandler : IRequestHandler<CreateEntryCo
 
         return await Task.FromResult(true);
     }
-}+
+}
