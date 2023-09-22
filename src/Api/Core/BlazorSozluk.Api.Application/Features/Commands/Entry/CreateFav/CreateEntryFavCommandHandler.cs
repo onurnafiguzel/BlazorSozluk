@@ -1,21 +1,22 @@
 ﻿using BlazorSozluk.Common;
+using BlazorSozluk.Common.Events.Entry;
 using BlazorSozluk.Common.Events.EntryComment;
 using BlazorSozluk.Common.Infrastructure;
 using MediatR;
 
 namespace BlazorSozluk.Api.Application.Features.Commands.Entry.CreateFav;
 
-public class CreateEntryCommentFavCommandHandler : IRequestHandler<CreateEntryCommentFavCommand, bool>
+public class CreateEntryFavCommandHandler : IRequestHandler<CreateEntryFavCommand, bool>
 {
-    public async Task<bool> Handle(CreateEntryCommentFavCommand request, CancellationToken cancellationToken)
+    public async Task<bool> Handle(CreateEntryFavCommand request, CancellationToken cancellationToken)
     {
         QueueFactory.SendMessageToExchange(
             exchangeName: SozlukConstants.FavExchangeName,
             exchangeType: SozlukConstants.DefaultExchangeType,
-            queueName: SozlukConstants.CreateEntryCommentFavQueueName,
-            obj: new CreateEntryCommentFavEvent()
+            queueName: SozlukConstants.CreateEntryFavQueueName,
+            obj: new CreateEntryFavEvent()
             {
-                EntryCommentId = request.EntryCommentId,
+                EntryId = request.EntryId,
                 CreatedBy = request.UserId
             });
         return await Task.FromResult(true);

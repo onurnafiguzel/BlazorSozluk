@@ -9,7 +9,6 @@ public class SozlukConstants
     public const string UserEmailChangedQueueName = "UserEmailChangedQueue";
 
     public const string FavExchangeName = "FavExchange";
-
     public const string CreateEntryFavQueueName = "CreateEntryFavQueue";
     public const string CreateEntryCommentFavQueueName = "CreateEntryCommentFavQueue";
     public const string CreateEntryCommentVoteQueueName = "CreateEntryCommentVoteQueue";
