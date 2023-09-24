@@ -30,6 +30,8 @@ public class ChangeUserCommandHandler : IRequestHandler<ChangeUserPasswordComman
 
         if (dbUser.Password != encPass) throw new DatabaseValidationException("Old password wrong!");
 
+        dbUser.Password = PasswordEncryptor.Encrpt(request.NewPassword);
+
         await userRepository.UpdateAsync(dbUser);
 
         return true;
