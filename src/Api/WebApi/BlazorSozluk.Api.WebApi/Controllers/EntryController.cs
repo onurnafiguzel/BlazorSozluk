@@ -1,4 +1,5 @@
-﻿using BlazorSozluk.Common.Models.RequestModels;
+﻿using BlazorSozluk.Api.Application.Features.Queries.GetEntries;
+using BlazorSozluk.Common.Models.RequestModels;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,13 @@ public class EntryController : BaseController
     public EntryController(IMediator mediator)
     {
         this.mediator = mediator;
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetEntries([FromQuery] GetEntriesQuery query)
+    {
+        var entries = await mediator.Send(query);
+        return Ok(entries);
     }
 
     [HttpPost]
