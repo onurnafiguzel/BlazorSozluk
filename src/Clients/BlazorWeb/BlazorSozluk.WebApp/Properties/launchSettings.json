@@ -26,5 +26,6 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
-  }
+  },
+  "BaseUrl": "https://localhost:5001"
 }
