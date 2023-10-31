@@ -9,7 +9,19 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-var baseUrl = builder.Configuration["BaseUrl"];
+var env = builder.HostEnvironment;
+
+//builder.Configuration.AddJsonFile(
+//    "appsettings.json",
+//    optional: false,
+//    reloadOnChange: true);
+
+//builder.Configuration.AddJsonFile(
+//    $"appsettings.{env.Environment}.json",
+//    optional: true,
+//    reloadOnChange: true);
+
+var baseUrl = "https://localhost:5001";
 builder.Services.AddHttpClient("WebApiClient", client =>
 {
     client.BaseAddress = new Uri(baseUrl);

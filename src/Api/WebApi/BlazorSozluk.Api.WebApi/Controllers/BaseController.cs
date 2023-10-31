@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
 namespace BlazorSozluk.Api.WebApi.Controllers;
@@ -8,4 +9,8 @@ namespace BlazorSozluk.Api.WebApi.Controllers;
 public class BaseController : ControllerBase
 {
     public Guid? UserId => Guid.NewGuid();// new(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+
+    private IMediator? _mediator;
+    protected  IMediator Mediator => _mediator ?? HttpContext.RequestServices.GetRequiredService<IMediator>();
+
 }
