@@ -3,8 +3,10 @@ using BlazorSozluk.Common.Infrastructure.Exceptions;
 using BlazorSozluk.Common.Infrastructure.Results;
 using BlazorSozluk.Common.Models.Queries;
 using BlazorSozluk.Common.ViewModels.RequestModels;
+using BlazorSozluk.WebApp.Infrastructure.Auth;
 using BlazorSozluk.WebApp.Infrastructure.Extensions;
 using BlazorSozluk.WebApp.Infrastructure.Services.Interfaces;
+using Microsoft.AspNetCore.Components.Authorization;
 using System.Net.Http.Json;
 using System.Text.Json;
 
@@ -14,12 +16,13 @@ public class IdentityService : IIdentityService
 {
     private readonly HttpClient httpClient;
     private readonly ISyncLocalStorageService syncLocalStorageService;
+    private readonly AuthenticationStateProvider authStateProvider;
 
-
-    public IdentityService(HttpClient httpClient, ISyncLocalStorageService syncLocalStorageService)
+    public IdentityService(HttpClient httpClient, ISyncLocalStorageService syncLocalStorageService, AuthenticationStateProvider authStateProvider = null)
     {
         this.httpClient = httpClient;
         this.syncLocalStorageService = syncLocalStorageService;
+        this.authStateProvider = authStateProvider;
     }
 
 
@@ -67,8 +70,7 @@ public class IdentityService : IIdentityService
             syncLocalStorageService.SetUsername(response.UserName);
             syncLocalStorageService.SetUserId(response.Id);
 
-            //TODO Check after auth
-            //((AuthStateProvider)authStateProvider).NotifyUserLogin(response.UserName, response.Id);
+            ((AuthStateProvider)authStateProvider).NotifyUserLogin(response.UserName, response.Id);
 
             httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("bearer", response.UserName);
 
@@ -84,8 +86,7 @@ public class IdentityService : IIdentityService
         syncLocalStorageService.RemoveItem(LocalStorageExtension.UserName);
         syncLocalStorageService.RemoveItem(LocalStorageExtension.UserId);
 
-        // TODO Check after auth
-        //((AuthStateProvider)authStateProvider).NotifyUserLogout();
+        ((AuthStateProvider)authStateProvider).NotifyUserLogout();
         httpClient.DefaultRequestHeaders.Authorization = null;
     }
 }

@@ -4,6 +4,8 @@ using BlazorSozluk.WebApp.Infrastructure.Services;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Blazored.LocalStorage;
+using Microsoft.AspNetCore.Components.Authorization;
+using BlazorSozluk.WebApp.Infrastructure.Auth;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -21,12 +23,11 @@ var env = builder.HostEnvironment;
 //    optional: true,
 //    reloadOnChange: true);
 
-var baseUrl = "https://localhost:5001";
 builder.Services.AddHttpClient("WebApiClient", client =>
 {
-    client.BaseAddress = new Uri(baseUrl);
-    //TODO AuthTokenHandler will be here
-});
+    client.BaseAddress = new Uri("https://localhost:5001");
+})
+    .AddHttpMessageHandler<AuthTokenHandler>();
 
 builder.Services.AddScoped(sp =>
 {
@@ -42,9 +43,12 @@ builder.Services.AddTransient<IVoteService, VoteService>();
 builder.Services.AddTransient<IFavService, FavService>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IIdentityService, IdentityService>();
+builder.Services.AddScoped<AuthTokenHandler>();
+builder.Services.AddScoped<AuthenticationStateProvider, AuthStateProvider>();
 
 #endregion
 
 builder.Services.AddBlazoredLocalStorage();
+builder.Services.AddAuthorizationCore();
 
 await builder.Build().RunAsync();

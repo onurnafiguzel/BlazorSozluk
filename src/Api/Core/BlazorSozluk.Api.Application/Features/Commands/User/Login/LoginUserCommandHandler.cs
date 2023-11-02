@@ -33,7 +33,8 @@ public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, LoginUs
         if (dbUser == null)
             throw new DatabaseValidationException("User not found!");
 
-        var pass = PasswordEncryptor.Encrpt(dbUser.Password);
+       // var pass = PasswordEncryptor.Encrpt(request.Password); //TODO
+        var pass = request.Password;
         if (dbUser.Password != pass)
             throw new DatabaseValidationException("Password is wrong!");
 

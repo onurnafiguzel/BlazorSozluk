@@ -14,16 +14,16 @@
             <div class="form-outline">
                 <input type="search"
                        class="form-control small"
-                       @bind-value="@searchText"
-                       @bind-value:event="oninput"
-                       @onkeypress="@SearchKeyDown"
-                       @onfocusout="@OnSearchFocusOut"
+                @bind-value="@searchText"
+                @bind-value:event="oninput"
+                @onkeypress="@SearchKeyDown"
+                @onfocusout="@OnSearchFocusOut"
                        placeholder="Search in Sozluk" />
             </div>
 
             <button type="button" class="btn btn-sozluk btn-success"
-                    @onclick="@Search"
-                    @onfocusout="@OnSearchFocusOut">
+            @onclick="@Search"
+            @onfocusout="@OnSearchFocusOut">
                 <i class="fa fa-search h-75"></i>
             </button>
         </div>
@@ -44,8 +44,8 @@
         }
 
     </div>
-    
-   @* <AuthorizeView>
+
+    <AuthorizeView>
         <Authorized>
             <div class="top-nav">
                 <input type="button" class="form-control btn-success btn-sozluk w-auto" value="Create Entry" @onclick="@NavigateCreateEntryPage" />
@@ -55,13 +55,13 @@
 
         </Authorized>
 
-        <NotAuthorized>*@
+        <NotAuthorized>
             <div class="top-nav">
                 <input type="button" class="form-control btn-success btn-sozluk w-auto" value="Login" @onclick="@NavigateLoginPage" />
             </div>
-       @* </NotAuthorized>
+        </NotAuthorized>
 
-    </AuthorizeView>*@
+    </AuthorizeView>
 
     <div class="sub-nav">
         <a class="sub-nav-item active">bugün</a>
