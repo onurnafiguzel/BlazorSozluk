@@ -10,7 +10,6 @@ namespace BlazorSozluk.Api.WebApi.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-[Authorize]
 
 public class VoteController : BaseController
 {
@@ -23,7 +22,7 @@ public class VoteController : BaseController
 
     [HttpPost]
     [Route("Entry/{entryId}")]
-    public async Task<IActionResult> CreateEntryVote(Guid entryId, VoteType voteType = VoteType.UpVote)
+    public async Task<IActionResult> CreateEntryVote(Guid entryId, Enums voteType = Enums.UpVote)
     {
         var result = await mediator.Send(new CreateEntryVoteCommand(entryId, voteType, UserId.Value));
 
@@ -32,7 +31,7 @@ public class VoteController : BaseController
 
     [HttpPost]
     [Route("EntryComment/{entryCommentId}")]
-    public async Task<IActionResult> CreateEntryCommentVote(Guid entryCommentId, VoteType voteType = VoteType.UpVote)
+    public async Task<IActionResult> CreateEntryCommentVote(Guid entryCommentId, Enums voteType = Enums.UpVote)
     {
         var result = await mediator.Send(new CreateEntryCommentVoteCommand(entryCommentId, voteType, UserId.Value));
 

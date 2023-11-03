@@ -35,7 +35,7 @@ public class GetEntryCommentsQueryHandler : IRequestHandler<GetEntryCommentsQuer
             VoteType =
                 request.UserId.HasValue && i.EntryCommentVotes.Any(j => j.CreatedById == request.UserId)
                 ? i.EntryCommentVotes.FirstOrDefault(j => j.CreatedById == request.UserId).VoteType
-                : Common.ViewModels.VoteType.None
+                : Common.ViewModels.Enums.None
         });
 
         var entries = await list.GetPaged(request.Page, request.PageSize);

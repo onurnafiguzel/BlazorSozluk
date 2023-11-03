@@ -34,7 +34,7 @@ public class GetEntryDetailQueryHandler : IRequestHandler<GetEntryDetailQuery, G
             VoteType =
                     request.UserId.HasValue && i.EntryVotes.Any(j => j.CreatedById == request.UserId)
                     ? i.EntryVotes.FirstOrDefault(j => j.CreatedById == request.UserId).VoteType
-                    : Common.ViewModels.VoteType.None
+                    : Common.ViewModels.Enums.None
         });
 
         return await list.FirstOrDefaultAsync(cancellationToken: cancellationToken);

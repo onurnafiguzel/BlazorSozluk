@@ -6,7 +6,7 @@ public class EntryVote : BaseEntity
 {
     public Guid EntryId { get; set; }
 
-    public VoteType VoteType { get; set; }
+    public Enums VoteType { get; set; }
 
     public Guid CreatedById { get; set; }
 
