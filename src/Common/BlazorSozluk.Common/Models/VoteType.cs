@@ -1,6 +1,6 @@
 ﻿namespace BlazorSozluk.Common.ViewModels;
 
-public enum Enums
+public enum VoteType
 {
     None = -1,
     DownVote = 0,

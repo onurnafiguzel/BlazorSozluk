@@ -69,21 +69,21 @@
         if (args.UpVoteDeleted || args.DownVoteDeleted)
         {
             await voteService.DeleteEntryVote(args.EntryId);
-            Entry.VoteType = Enums.None;
+            Entry.VoteType = VoteType.None;
             return;
         }
 
         if (args.IsUpVoteClicked)
         {
             await voteService.CreateEntryUpVote(args.EntryId);
-            Entry.VoteType = Enums.UpVote;
+            Entry.VoteType = VoteType.UpVote;
             return;
         }
 
         if (args.IsDownVoteClicked)
         {
             await voteService.CreateEntryDownVote(args.EntryId);
-            Entry.VoteType = Enums.DownVote;
+            Entry.VoteType = VoteType.DownVote;
             return;
         }
     }

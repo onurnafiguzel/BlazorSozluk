@@ -35,7 +35,7 @@ public class GetMainPageEntriesQueryHandler : IRequestHandler<GetMainPageEntries
             VoteType =
                 request.UserId.HasValue && i.EntryVotes.Any(j => j.CreatedById == request.UserId)
                 ? i.EntryVotes.FirstOrDefault(j => j.CreatedById == request.UserId).VoteType
-                : Common.ViewModels.Enums.None,
+                : Common.ViewModels.VoteType.None,
         });
 
         var entries = await list.GetPaged(request.Page, request.PageSize);

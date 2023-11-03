@@ -4,7 +4,7 @@ namespace BlazorSozluk.Common.Models.Queries;
 
 public class BaseFooterRateViewModel
 {
-    public Enums VoteType { get; set; }
+    public VoteType VoteType { get; set; }
 }
 
 public class BaseFooterFavoritedViewModel
@@ -14,6 +14,6 @@ public class BaseFooterFavoritedViewModel
 }
 public class BaseFooterRateFavoritedViewModel : BaseFooterFavoritedViewModel
 {
-    public Enums VoteType { get; set; }
+    public VoteType VoteType { get; set; }
 
 }

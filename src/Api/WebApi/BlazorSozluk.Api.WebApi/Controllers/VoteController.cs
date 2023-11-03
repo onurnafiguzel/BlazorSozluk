@@ -22,7 +22,7 @@ public class VoteController : BaseController
 
     [HttpPost]
     [Route("Entry/{entryId}")]
-    public async Task<IActionResult> CreateEntryVote(Guid entryId, Enums voteType = Enums.UpVote)
+    public async Task<IActionResult> CreateEntryVote(Guid entryId, VoteType voteType = VoteType.UpVote)
     {
         var result = await mediator.Send(new CreateEntryVoteCommand(entryId, voteType, UserId.Value));
 
@@ -31,7 +31,7 @@ public class VoteController : BaseController
 
     [HttpPost]
     [Route("EntryComment/{entryCommentId}")]
-    public async Task<IActionResult> CreateEntryCommentVote(Guid entryCommentId, Enums voteType = Enums.UpVote)
+    public async Task<IActionResult> CreateEntryCommentVote(Guid entryCommentId, VoteType voteType = VoteType.UpVote)
     {
         var result = await mediator.Send(new CreateEntryCommentVoteCommand(entryCommentId, voteType, UserId.Value));
 

@@ -8,9 +8,9 @@ namespace BlazorSozluk.Api.WebApi.Controllers;
 [ApiController]
 public class BaseController : ControllerBase
 {
-    public Guid? UserId => Guid.NewGuid();// new(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+    public Guid? UserId => new(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
 
     private IMediator? _mediator;
-    protected  IMediator Mediator => _mediator ?? HttpContext.RequestServices.GetRequiredService<IMediator>();
+    protected IMediator Mediator => _mediator ?? HttpContext.RequestServices.GetRequiredService<IMediator>();
 
 }

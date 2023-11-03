@@ -7,7 +7,7 @@ public class CreateEntryCommentVoteCommand : IRequest<bool>
 {
     public Guid EntryCommentId { get; set; }
 
-    public Enums VoteType { get; set; }
+    public VoteType VoteType { get; set; }
 
     public Guid CreatedBy { get; set; }
 
@@ -16,7 +16,7 @@ public class CreateEntryCommentVoteCommand : IRequest<bool>
 
     }
 
-    public CreateEntryCommentVoteCommand(Guid entryCommentId, Enums voteType, Guid createdBy)
+    public CreateEntryCommentVoteCommand(Guid entryCommentId, VoteType voteType, Guid createdBy)
     {
         EntryCommentId = entryCommentId;
         VoteType = voteType;
