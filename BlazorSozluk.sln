@@ -39,6 +39,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorSozluk.Api.Infrastructure.Persistence", "src\Api\Infrastructure\BlazorSozluk.Api.Infrastructure.Persistence\BlazorSozluk.Api.Infrastructure.Persistence.csproj", "{CC9E0973-B1CE-4117-BE2D-43B7ED6B5994}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{F049DDDD-DF81-45E1-B7CD-8847D8159352}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D745CD80-16B8-4A87-BF3C-10D8C66CF0F2}"
+	ProjectSection(SolutionItems) = preProject
+		DockerComposeSteps_External.txt = DockerComposeSteps_External.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +88,10 @@ Global
 		{CC9E0973-B1CE-4117-BE2D-43B7ED6B5994}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC9E0973-B1CE-4117-BE2D-43B7ED6B5994}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC9E0973-B1CE-4117-BE2D-43B7ED6B5994}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F049DDDD-DF81-45E1-B7CD-8847D8159352}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F049DDDD-DF81-45E1-B7CD-8847D8159352}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F049DDDD-DF81-45E1-B7CD-8847D8159352}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F049DDDD-DF81-45E1-B7CD-8847D8159352}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
